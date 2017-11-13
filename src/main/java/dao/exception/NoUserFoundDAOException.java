@@ -2,6 +2,7 @@ package dao.exception;
 
 public class NoUserFoundDAOException extends DAOException {
     public NoUserFoundDAOException() {
+        super("No matches found!");
     }
 
     public NoUserFoundDAOException(String message) {

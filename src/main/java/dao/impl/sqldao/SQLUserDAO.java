@@ -24,7 +24,7 @@ public class SQLUserDAO implements UserDAO {
             try (ResultSet resultSet = statement.executeQuery()) {
                 if (resultSet.isBeforeFirst()) {
                     addUsersFromResultSet(users, resultSet);
-                } else throw new NoUserFoundDAOException("No matches found!");
+                } else throw new NoUserFoundDAOException();
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new DAOException("Cannot connect to database!", e);

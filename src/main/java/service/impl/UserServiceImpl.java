@@ -7,6 +7,8 @@ import dao.impl.sqldao.DAOFactory;
 import entity.User;
 import service.UserService;
 import service.exception.ServiceException;
+import service.exception.WrongParametersException;
+import service.validator.Validator;
 
 import java.util.List;
 
@@ -17,7 +19,12 @@ public class UserServiceImpl implements UserService {
         DAOFactory factory = DAOFactory.getInstance();
         UserDAO userDAO = factory.getUserDAO();
         try {
-            userDAO.findByInitials(name, surname, users);
+            Validator validator = new Validator();
+            if (validator.validate(name, surname)) {
+                userDAO.findByInitials(name, surname, users);
+            } else {
+                throw new WrongParametersException();
+            }
         } catch (DAOException e) {
             throw new ServiceException(e.getMessage());
         }
