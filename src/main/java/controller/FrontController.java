@@ -20,17 +20,17 @@ public class FrontController extends HttpServlet {
         ServiceFactory factory = ServiceFactory.getInstance();
         UserService  userService = factory.getService();
 
-        String name = request.getParameter(ControllerConstants.nameAttribute);
-        String surname = request.getParameter(ControllerConstants.surnameAttribute);
+        String name = request.getParameter(ControllerConstants.NAME_ATTRIBUTE);
+        String surname = request.getParameter(ControllerConstants.SURNAME_ATTRIBUTE);
         List <User> user = new ArrayList<>();
         try {
             userService.find(name,surname,user);
-            request.setAttribute("userList", user);
+            request.setAttribute(ControllerConstants.USER_LIST_ATTRIBUTE, user);
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/answer.jsp");
             dispatcher.forward(request, response);
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/smthWrong.jsp");
-            request.setAttribute("problem",e.getMessage());
+            request.setAttribute(ControllerConstants.PROBLEM_ATTRIBUTE,e.getMessage());
             dispatcher.forward(request, response);
         }
 

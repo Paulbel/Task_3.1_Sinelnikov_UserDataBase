@@ -27,7 +27,7 @@ public class SQLUserDAO implements UserDAO {
                 } else throw new NoUserFoundDAOException();
             }
         } catch (SQLException | ClassNotFoundException e) {
-            throw new DAOException("Cannot connect to database!", e);
+            throw new DAOException(e);
         }
     }
 
@@ -47,16 +47,4 @@ public class SQLUserDAO implements UserDAO {
         }
 
     }
-
-    @Override
-    public void registration() {
-
-    }
-
-    @Override
-    public User authorization() {
-        return null;
-    }
-
-
 }
