@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-
+// команды уже мог бы запилить
 public class FrontController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServiceFactory factory = ServiceFactory.getInstance();
@@ -24,12 +24,12 @@ public class FrontController extends HttpServlet {
         try {
             List<User> user = userService.find(name, surname);
             request.setAttribute(ControllerConstants.USER_LIST_ATTRIBUTE, user);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/answer.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/answer.jsp");// неименованая константная строка
             dispatcher.forward(request, response);
         } catch (ServiceException e) {
             RequestDispatcher dispatcher = request.getRequestDispatcher("WEB-INF/jsp/smthWrong.jsp");
             request.setAttribute(ControllerConstants.PROBLEM_ATTRIBUTE, e.getMessage());
-            dispatcher.forward(request, response);
+            dispatcher.forward(request, response);// зачем будлировать вызов forward?
         }
 
 
