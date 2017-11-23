@@ -1,6 +1,6 @@
 package dao.impl;
 
-public final class SQIDAOConstants {
+public final class SQIDAOConstants {// ну вы что, реально глухие? ну сколько раз говорила, что классы не именуются множественным числом
     public static final String FIND_USER_BY_INITIALS_SURNAME = "SELECT * FROM info WHERE name =? AND surname = ?";
     public static final int FIND_USER_BY_INITIALS_NAME_INDEX = 1;
     public static final int FIND_USER_BY_INITIALS_SURNAME_INDEX = 2;
