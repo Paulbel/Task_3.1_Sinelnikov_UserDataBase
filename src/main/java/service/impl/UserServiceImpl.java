@@ -19,13 +19,13 @@ public class UserServiceImpl implements UserService {
         UserDAO userDAO = factory.getUserDAO();
         try {
             Validator validator = new Validator();
-            if (validator.validate(name, surname)) {
+            if (validator.validate(name, surname)) {// может сначала провалидируем, а потом уже фабрики будем дергать? а то вдруг они и не понадобятрся
                 return userDAO.findByInitials(name, surname);
             } else {
                 throw new WrongParametersException("Incorrect data, check it!");
             }
         } catch (DAOException e) {
-            throw new ServiceException(e);
+            throw new ServiceException(e);// ну вот в дао все корректно написал, а тут куда message дел?
         }
     }
 }
