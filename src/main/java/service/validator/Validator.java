@@ -4,14 +4,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Validator {
-    private Pattern pattern = Pattern.compile("([a-zA-Z]-*)+");
+    private static final String nameValidateString = "([a-zA-Z]-*)+";
+    private static final Pattern nameValidatePattern = Pattern.compile(nameValidateString);
     public Validator(){
     }
 
     public boolean validate (String name, String surname){
-        Matcher matcher = pattern.matcher(name);
+        Matcher matcher = nameValidatePattern.matcher(name);
         if (matcher.matches()){
-            matcher = pattern.matcher(surname);
+            matcher = nameValidatePattern.matcher(surname);
             if (matcher.matches()){
                 return true;
             }

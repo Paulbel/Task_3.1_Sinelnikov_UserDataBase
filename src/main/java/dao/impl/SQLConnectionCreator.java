@@ -1,4 +1,4 @@
-package dao.impl.sqldao;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -15,7 +15,6 @@ public final class SQLConnectionCreator {
         Class.forName("com.mysql.jdbc.Driver");
         Connection connection = DriverManager.getConnection("jdbc:mysql://"+ HOST +":"+ PORT +"/"+
                         DB_NAME+"?autoReconnect=true&useSSL=false", LOGIN, PASSWORD);
-
         return connection;
     }
 

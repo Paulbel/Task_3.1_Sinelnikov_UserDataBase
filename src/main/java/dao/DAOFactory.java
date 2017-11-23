@@ -1,7 +1,7 @@
-package dao.impl.sqldao;
+package dao;
 
 
-import dao.UserDAO;
+import dao.impl.SQLUserDAO;
 
 
 public class DAOFactory {

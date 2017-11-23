@@ -1,4 +1,4 @@
-package dao.impl.sqldao;
+package dao.impl;
 
 public final class SQIDAOConstants {
     public static final String FIND_USER_BY_INITIALS_SURNAME = "SELECT * FROM info WHERE name =? AND surname = ?";

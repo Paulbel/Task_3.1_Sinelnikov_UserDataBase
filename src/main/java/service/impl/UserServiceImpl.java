@@ -3,7 +3,7 @@ package service.impl;
 
 import dao.UserDAO;
 import dao.exception.DAOException;
-import dao.impl.sqldao.DAOFactory;
+import dao.DAOFactory;
 import entity.User;
 import service.UserService;
 import service.exception.ServiceException;
@@ -14,19 +14,18 @@ import java.util.List;
 
 
 public class UserServiceImpl implements UserService {
-    public void find(String name, String surname, List<User> users) throws ServiceException {
-        //validate
+    public List<User> find(String name, String surname) throws ServiceException {
         DAOFactory factory = DAOFactory.getInstance();
         UserDAO userDAO = factory.getUserDAO();
         try {
             Validator validator = new Validator();
             if (validator.validate(name, surname)) {
-                userDAO.findByInitials(name, surname, users);
+                return userDAO.findByInitials(name, surname);
             } else {
-                throw new WrongParametersException();
+                throw new WrongParametersException("Incorrect data, check it!");
             }
         } catch (DAOException e) {
-            throw new ServiceException(e.getMessage());
+            throw new ServiceException(e);
         }
     }
 }

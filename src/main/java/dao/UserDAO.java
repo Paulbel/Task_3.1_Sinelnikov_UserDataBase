@@ -7,5 +7,5 @@ import java.util.List;
 
 
 public interface UserDAO {
-    void findByInitials(String name, String surname, List<User> users) throws DAOException;
+    List<User> findByInitials(String name, String surname) throws DAOException;
 }

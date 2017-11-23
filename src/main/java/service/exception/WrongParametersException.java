@@ -2,7 +2,7 @@ package service.exception;
 
 public class WrongParametersException extends ServiceException {
     public WrongParametersException() {
-        super("Wrong parameters!");
+        super();
     }
 
     public WrongParametersException(String message) {
