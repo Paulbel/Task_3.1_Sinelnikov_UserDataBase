@@ -1,4 +1,4 @@
-package entity;
+package entity;// а про иерархию пакетов я кому рассказывала?
 
 public class User {
     private String name;
