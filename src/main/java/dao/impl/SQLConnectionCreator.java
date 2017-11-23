@@ -12,7 +12,8 @@ public final class SQLConnectionCreator {
     private static final String DB_NAME = "users";
 
     public static Connection createConnection() throws SQLException, ClassNotFoundException {
-        Class.forName("com.mysql.jdbc.Driver");
+        Class.forName("com.mysql.jdbc.Driver");//1 - неименованная строковая константа
+        // 2 - ты посчитал, сколько раз у тебя будет выполнять этот оператор, который должен выполняться только один раз?
         Connection connection = DriverManager.getConnection("jdbc:mysql://"+ HOST +":"+ PORT +"/"+
                         DB_NAME+"?autoReconnect=true&useSSL=false", LOGIN, PASSWORD);
         return connection;
